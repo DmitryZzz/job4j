@@ -23,8 +23,8 @@ public class SqMaxTest {
 
     @Test
     public void whenThirdMax() {
-        int expected = 6;
-        int s = SqMax.max(2, 2,6,4);
+        int expected = 8;
+        int s = SqMax.max(6, 2,8,4);
         assertThat(s, is(expected));
     }
 
