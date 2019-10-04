@@ -11,7 +11,7 @@ public class MatrixCheck {
                 if (cell == 0 & sign == 'X') {
                     result = true;
                     for (int k = cell; k < board.length; k++) {
-                        if(board[row][k] != 'X') {
+                        if (board[row][k] != 'X') {
                             result = false;
                             break;
                         }
@@ -19,7 +19,7 @@ public class MatrixCheck {
                 } else if (row == 0 & sign == 'X') {
                     result = true;
                     for (int k = row; k < board.length; k++) {
-                        if(board[k][cell] != 'X') {
+                        if (board[k][cell] != 'X') {
                             result = false;
                             break;
                         }

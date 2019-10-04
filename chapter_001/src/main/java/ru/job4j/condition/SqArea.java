@@ -14,9 +14,9 @@ public class SqArea {
 
         int halfP = p / 2;
         double h = halfP / (k + 1);
-        double L = h * k;
+        double l = h * k;
 
-        return h * L;
+        return h * l;
 
     }
 

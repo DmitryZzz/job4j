@@ -5,7 +5,9 @@ public class Counter {
         int sum = 0;
 
         while (start <= finish) {
-            if(start % 2 == 0) sum += start;
+            if (start % 2 == 0) {
+                sum += start;
+            }
             start++;
         }
 
