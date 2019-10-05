@@ -4,7 +4,7 @@ package ru.job4j.array;
  * Class MatrxCheck.
  *
  * @author Dmitry Zimin
- * @version 2
+ * @version 3
  * @since 2019-10-04
  */
 public class MatrixCheck {
@@ -19,8 +19,8 @@ public class MatrixCheck {
         boolean result = false;
         int counterH, counterV;
 
-        for (int row = 0, cell = 0; row < board.length; row++, cell++) {
-            char sign = board[row][cell];
+        for (int row = 0; row < board.length; row++) {
+            char sign = board[row][row];
 
             if (sign == 'X') {
                 counterV = 0;
@@ -29,7 +29,7 @@ public class MatrixCheck {
                     if (board[row][i] == 'X') {
                         counterV++;
                     }
-                    if (board[i][cell] == 'X') {
+                    if (board[i][row] == 'X') {
                         counterH++;
                     }
                 }
