@@ -1,32 +1,43 @@
 package ru.job4j.array;
 
+/**
+ * Class MatrxCheck.
+ *
+ * @author Dmitry Zimin
+ * @version 2
+ * @since 2019-10-04
+ */
 public class MatrixCheck {
+
+    /**
+     * Метод проверяет, что по горизонтали или вертикали все символы = X
+     *
+     * @param board массив типа char
+     * @return true or false
+     */
     public static boolean isWin(char[][] board) {
         boolean result = false;
-        for (int row = 0; row < board.length; row++) {
-            for (int cell = 0; cell < board.length; cell++) {
-                char sign = board[row][cell];
-                System.out.print(sign);
+        int counterH, counterV;
 
-                if (cell == 0 & sign == 'X') {
-                    result = true;
-                    for (int k = cell; k < board.length; k++) {
-                        if (board[row][k] != 'X') {
-                            result = false;
-                            break;
-                        }
+        for (int row = 0, cell = 0; row < board.length; row++, cell++) {
+            char sign = board[row][cell];
+
+            if (sign == 'X') {
+                counterV = 0;
+                counterH = 0;
+                for (int i = 0; i < board.length; i++) {
+                    if (board[row][i] == 'X') {
+                        counterV++;
                     }
-                } else if (row == 0 & sign == 'X') {
-                    result = true;
-                    for (int k = row; k < board.length; k++) {
-                        if (board[k][cell] != 'X') {
-                            result = false;
-                            break;
-                        }
+                    if (board[i][cell] == 'X') {
+                        counterH++;
                     }
                 }
+                if (counterH == board.length | counterV == board.length) {
+                    result = true;
+                    break;
+                }
             }
-            System.out.println();
         }
         return result;
     }
