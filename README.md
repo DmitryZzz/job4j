@@ -1,3 +1,3 @@
 # job4j_temp
 
-hotfix branch
+squash3.
