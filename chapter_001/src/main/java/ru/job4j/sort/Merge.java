@@ -23,7 +23,6 @@ public class Merge {
         int i = 0;
         int j = 0;
         int counter = 0;
-
         while (counter < rsl.length) {
             if (i > left.length - 1) {
                 rsl[counter] = right[j];

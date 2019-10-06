@@ -2,6 +2,7 @@ package ru.job4j.loop;
 
 /**
  * Slash.
+ *
  * @author Dmitry Zimin (yes.zimin@gmail.com)
  */
 
@@ -26,6 +27,7 @@ public class Slash {
 
     /**
      * Main.
+     *
      * @param args - args.
      */
 

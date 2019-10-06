@@ -6,7 +6,6 @@ public class Triangle {
         boolean condition1 = ab + ac > bc;
         boolean condition2 = ac + bc > ab;
         boolean condition3 = ab + bc > ac;
-
         return condition1 && condition2 && condition3;
     }
 }

@@ -19,10 +19,8 @@ public class Converter {
     }
 
     public static void test(int in, int expected, int out, String currency) {
-
         boolean passed = expected == out;
         System.out.println(in + " " + currency + " are " + out + ". Test result : " + passed);
-
     }
 
     public static void main(String[] args) {
@@ -30,10 +28,7 @@ public class Converter {
         System.out.println("180 rubles are " + rubleToDollar(180) + " dollars.");
         System.out.println("10 euros are " + euroToRuble(10) + " rubles.");
         System.out.println("25 dollars are " + dollarToRuble(25) + " rubles.");
-
         System.out.println();
-
-        // Tests
         System.out.println("Tests:");
         test(140, 2, rubleToEuro(140), "rubles");
         test(180, 3, rubleToDollar(180), "rubles");

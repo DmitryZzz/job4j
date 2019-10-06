@@ -7,10 +7,10 @@ public class Defragment {
             if (cell == null) {
                 int tmp = index;
                 while (tmp < array.length - 1) {
-                    array[tmp] = array[tmp + 1]; // смещаем все элементы
+                    array[tmp] = array[tmp + 1];
                     tmp++;
                 }
-                array[array.length - 1] = cell; // последнему элементу присваиваем пустое значение
+                array[array.length - 1] = cell;
             }
             System.out.print(array[index] + " ");
         }

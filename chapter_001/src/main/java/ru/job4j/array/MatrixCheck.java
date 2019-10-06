@@ -18,10 +18,8 @@ public class MatrixCheck {
     public static boolean isWin(char[][] board) {
         boolean result = false;
         int counterH, counterV;
-
         for (int row = 0; row < board.length; row++) {
             char sign = board[row][row];
-
             if (sign == 'X') {
                 counterV = 0;
                 counterH = 0;
