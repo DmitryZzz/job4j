@@ -7,6 +7,10 @@ public class Student {
     private String group;
     private Date date;
 
+    public Student() {
+
+    }
+
     public Student(String name, String group, Date date) {
         this.name = name;
         this.group = group;
