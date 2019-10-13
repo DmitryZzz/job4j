@@ -12,7 +12,7 @@ public class Matches {
         while (pcs > 0) {
             boolean run = true;
             while (run) {
-                System.out.print("Игрок " + player + " возмите со стола от 1 до 3 спичек: ");
+                System.out.print("Игрок " + player + " возьмите со стола от 1 до 3 спичек: ");
                 int get = Integer.valueOf(input.nextLine());
                 if (get >= 1 && get <= 3) {
                     run = false;

@@ -23,7 +23,15 @@ public class StartUI {
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit Item ====");
-                //TODO
+                System.out.print("Enter ID: ");
+                String id = scanner.nextLine();
+                System.out.print("Enter new name: ");
+                String name = scanner.nextLine();
+                if (tracker.replace(id, new Item(name))) {
+                    System.out.println("Элемент успешно обновлен");
+                } else {
+                    System.out.println("Не удалось найти элемент по указанному ID.");
+                }
             } else if (select == 3) {
                 System.out.println("=== Delete Item ====");
                 System.out.print("Enter ID: ");
@@ -71,7 +79,6 @@ public class StartUI {
         System.out.println("5. Find items by name");
         System.out.println("6. Exit Program");
     }
-
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
