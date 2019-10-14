@@ -41,8 +41,7 @@ public class StartUI {
 
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
-        System.out.print("Enter name: ");
-        String name = input.askStr("");
+        String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
     }
@@ -56,10 +55,8 @@ public class StartUI {
 
     public static void editItem(Input input, Tracker tracker) {
         System.out.println("=== Edit Item ====");
-        System.out.print("Enter ID: ");
-        String id = input.askStr("");
-        System.out.print("Enter new name: ");
-        String name = input.askStr("");
+        String id = input.askStr("Enter ID: ");
+        String name = input.askStr("Enter new name: ");
         if (tracker.replace(id, new Item(name))) {
             System.out.println("Элемент успешно обновлен");
         } else {
@@ -69,8 +66,7 @@ public class StartUI {
 
     public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete Item ====");
-        System.out.print("Enter ID: ");
-        String id = input.askStr("");
+        String id = input.askStr("Enter ID: ");
         if (tracker.delete(id)) {
             System.out.println("Элемент успешно удален");
         } else {
@@ -80,8 +76,7 @@ public class StartUI {
 
     public static void findItemByID(Input input, Tracker tracker) {
         System.out.println("=== Find item by ID ====");
-        System.out.print("Enter ID: ");
-        String id = input.askStr("");
+        String id = input.askStr("Enter ID: ");
         Item item = tracker.findById(id);
         if (item != null) {
             System.out.println(item.getName() + " (" + item.getId() + ")");
@@ -92,8 +87,7 @@ public class StartUI {
 
     public static void findItemByName(Input input, Tracker tracker) {
         System.out.println("=== Find item by name ====");
-        System.out.print("Enter name: ");
-        String name = input.askStr("");
+        String name = input.askStr("Enter name: ");
         Item[] itemArr = tracker.findByName(name);
         if (itemArr.length != 0) {
             for (Item item : itemArr) {
