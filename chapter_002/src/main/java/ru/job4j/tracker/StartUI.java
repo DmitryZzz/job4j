@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import java.util.concurrent.locks.Condition;
-
 public class StartUI {
 
     public void init(Input input, Tracker tracker) {
