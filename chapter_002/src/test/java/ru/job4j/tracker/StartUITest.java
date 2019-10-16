@@ -5,6 +5,7 @@ import org.hamcrest.core.IsNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.StringJoiner;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -47,29 +48,6 @@ public class StartUITest {
     }
 
     @Test
-    public void whenShowsAllItems() {
-        Tracker tracker = new Tracker();
-        Item item1 = new Item("first item");
-        Item item2 = new Item("second item");
-        tracker.add(item1);
-        tracker.add(item2);
-        String[] answers = {item1.getId(), item2.getId()};
-        StringBuilder sb = new StringBuilder();
-        for (Item item : tracker.findAll()) {
-            sb.append(item.getName() + " (" + item.getId() + ")\r\n");
-        }
-        PrintStream stdout = System.out;
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        new ShowAllAction().execute(new StubInput(answers), tracker);
-        System.setOut(stdout);
-        assertThat(
-                new String(out.toByteArray()),
-                is(sb.toString())
-        );
-    }
-
-    @Test
     public void whenFindByIDItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
@@ -90,5 +68,75 @@ public class StartUITest {
         StubAction action = new StubAction();
         new StartUI().init(input, new Tracker(), new UserAction[]{action});
         assertThat(action.isCall(), is(true));
+    }
+
+    @Test
+    public void whenPrtMenu() {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+        StubInput input = new StubInput(
+                new String[]{"0"}
+        );
+        StubAction action = new StubAction();
+        new StartUI().init(input, new Tracker(), new UserAction[]{action});
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("Menu.")
+                .add("0. Stub action")
+                .toString();
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(def);
+    }
+
+    @Test
+    public void whenShowAllItems() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("first item");
+        Item item2 = new Item("second item");
+        tracker.add(item1);
+        tracker.add(item2);
+        String[] answers = {};
+        StringBuilder sb = new StringBuilder();
+        for (Item item : tracker.findAll()) {
+            sb.append(item.getName() + " (" + item.getId() + ")\r\n");
+        }
+        PrintStream stdout = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        new ShowAllAction().execute(new StubInput(answers), tracker);
+        System.setOut(stdout);
+        assertThat(
+                new String(out.toByteArray()),
+                is(sb.toString())
+        );
+    }
+
+    @Test
+    public void whenFindByName() {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream def = System.out;
+        System.setOut(new PrintStream(out));
+        StubInput input = new StubInput(
+                new String[]{"0", "new item2", "1"}
+        );
+        Tracker tracker = new Tracker();
+        Item item = new Item("new item");
+        Item item2 = new Item("new item2");
+        tracker.add(item);
+        tracker.add(item2);
+        item2.setId("12345");
+        StubAction action = new StubAction();
+        new StartUI().init(input, tracker, new UserAction[]{new FindByNameAction(), action});
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("Menu.")
+                .add("0. === Find item by name ====")
+                .add("1. Stub action")
+                .add("new item2 (12345)")
+                .add("Menu.")
+                .add("0. === Find item by name ====")
+                .add("1. Stub action")
+                .toString();
+        assertThat(new String(out.toByteArray()), is(expect));
+        System.setOut(def);
     }
 }
