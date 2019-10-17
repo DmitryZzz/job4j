@@ -97,9 +97,8 @@ public class StartUITest {
         tracker.add(item2);
         String[] answers = {};
         StringBuilder sb = new StringBuilder();
-        for (Item item : tracker.findAll()) {
-            sb.append(item.getName() + " (" + item.getId() + ")\r\n");
-        }
+        sb.append(item1.getName() + " (" + item1.getId() + ")\r\n");
+        sb.append(item2.getName() + " (" + item2.getId() + ")\r\n");
         PrintStream stdout = System.out;
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
