@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import com.sun.prism.impl.QueuedPixelSource;
+
 public class StubInput implements Input {
     private String[] answers;
     private int position = 0;
@@ -16,5 +18,10 @@ public class StubInput implements Input {
     @Override
     public int askInt(String question) {
         return Integer.valueOf(askStr(question));
+    }
+
+    @Override
+    public int askInt(String question, int max) {
+        return askInt(question);
     }
 }
