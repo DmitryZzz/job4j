@@ -19,10 +19,10 @@ public class ValidateInputTest {
         ValidateInput input = new ValidateInput(
                 new StubInput(new String[]{"Enter", "1"})
         );
-        input.askInt("Enter", 1);
+        input.askInt("Enter", 2);
         assertThat(
                 out.toString(),
-                is(String.format("Please enter valid data again."))
+                is(String.format("Please enter valid data again.%n"))
         );
         System.setOut(def);
     }
@@ -35,7 +35,7 @@ public class ValidateInputTest {
         ValidateInput input = new ValidateInput(
                 new StubInput(new String[]{"2", "1"})
         );
-        input.askInt("Enter", 1);
+        input.askInt("Enter", 2);
         assertThat(
                 out.toString(),
                 is(String.format("Please select key from menu.%n"))
