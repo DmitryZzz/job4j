@@ -1,6 +1,10 @@
 package ru.job4j.tracker;
 
-public class CreateAction implements UserAction {
+public class CreateAction extends BaseAction {
+
+    public CreateAction(String name) {
+        super(name);
+    }
 
     @Override
     public String name() {
