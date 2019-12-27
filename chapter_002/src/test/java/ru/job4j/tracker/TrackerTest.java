@@ -74,4 +74,32 @@ public class TrackerTest {
         assertThat(result, is(expected));
     }
 
+    @Test
+    public void whenCreateTrackerEnumThenitIsSingletone() {
+        TrackerEnum tracker1 = TrackerEnum.INSTANCE;
+        TrackerEnum tracker2 = TrackerEnum.INSTANCE;
+        assertThat(tracker1, is(tracker2));
+    }
+
+    @Test
+    public void whenCreateTrackerStaticFieldLazyLoadingThenitIsSingletone() {
+        TrackerStaticFieldLazyLoading tracker1 = TrackerStaticFieldLazyLoading.getInstance();
+        TrackerStaticFieldLazyLoading tracker2 = TrackerStaticFieldLazyLoading.getInstance();
+        assertThat(tracker1, is(tracker2));
+    }
+
+    @Test
+    public void whenCreateTrackerStaticFinalFieldEagerLoadingThenitIsSingletone() {
+        TrackerStaticFinalFieldEagerLoading tracker1 = TrackerStaticFinalFieldEagerLoading.getInstance();
+        TrackerStaticFinalFieldEagerLoading tracker2 = TrackerStaticFinalFieldEagerLoading.getInstance();
+        assertThat(tracker1, is(tracker2));
+    }
+
+    @Test
+    public void whenCreateTrackerStaticFinalClassLazyLoadingThenitIsSingletone() {
+        TrackerStaticFinalClassLazyLoading tracker1 = TrackerStaticFinalClassLazyLoading.getInstance();
+        TrackerStaticFinalClassLazyLoading tracker2 = TrackerStaticFinalClassLazyLoading.getInstance();
+        assertThat(tracker1, is(tracker2));
+    }
+
 }
