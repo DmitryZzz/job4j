@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class TrackerTest {
     @Test
@@ -75,31 +75,31 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenCreateTrackerEnumThenitIsSingletone() {
-        TrackerEnum tracker1 = TrackerEnum.INSTANCE;
-        TrackerEnum tracker2 = TrackerEnum.INSTANCE;
-        assertThat(tracker1, is(tracker2));
+    public void whenCreateTrackerEnumThenItIsSingletone() {
+        Tracker tracker1 = TrackerEnum.INSTANCE.tracker;
+        Tracker tracker2 = TrackerEnum.INSTANCE.tracker;
+        assertSame(tracker1, tracker2);
     }
 
     @Test
-    public void whenCreateTrackerStaticFieldLazyLoadingThenitIsSingletone() {
-        TrackerStaticFieldLazyLoading tracker1 = TrackerStaticFieldLazyLoading.getInstance();
-        TrackerStaticFieldLazyLoading tracker2 = TrackerStaticFieldLazyLoading.getInstance();
-        assertThat(tracker1, is(tracker2));
+    public void whenCreateTrackerStaticFieldLazyLoadingThenItIsSingletone() {
+        Tracker tracker1 = TrackerStaticFieldLazyLoading.getInstance();
+        Tracker tracker2 = TrackerStaticFieldLazyLoading.getInstance();
+        assertSame(tracker1, tracker2);
     }
 
     @Test
-    public void whenCreateTrackerStaticFinalFieldEagerLoadingThenitIsSingletone() {
-        TrackerStaticFinalFieldEagerLoading tracker1 = TrackerStaticFinalFieldEagerLoading.getInstance();
-        TrackerStaticFinalFieldEagerLoading tracker2 = TrackerStaticFinalFieldEagerLoading.getInstance();
-        assertThat(tracker1, is(tracker2));
+    public void whenCreateTrackerStaticFinalFieldEagerLoadingThenItIsSingletone() {
+        Tracker tracker1 = TrackerStaticFinalFieldEagerLoading.getInstance();
+        Tracker tracker2 = TrackerStaticFinalFieldEagerLoading.getInstance();
+        assertSame(tracker1, tracker2);
     }
 
     @Test
-    public void whenCreateTrackerStaticFinalClassLazyLoadingThenitIsSingletone() {
-        TrackerStaticFinalClassLazyLoading tracker1 = TrackerStaticFinalClassLazyLoading.getInstance();
-        TrackerStaticFinalClassLazyLoading tracker2 = TrackerStaticFinalClassLazyLoading.getInstance();
-        assertThat(tracker1, is(tracker2));
+    public void whenCreateTrackerStaticFinalClassLazyLoadingThenItIsSingletone() {
+        Tracker tracker1 = TrackerStaticFinalClassLazyLoading.getInstance();
+        Tracker tracker2 = TrackerStaticFinalClassLazyLoading.getInstance();
+        assertSame(tracker1, tracker2);
     }
 
 }
